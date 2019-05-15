@@ -1,0 +1,1 @@
+**out-of-source** build，与in-source build相对，即将编译输出文件与源文件放到不同目录中；
