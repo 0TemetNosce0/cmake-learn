@@ -44,19 +44,15 @@ endif()
 #不能用if(ENV{JAVA_HOME})形式来判断是否定义 
 #但可以用if($ENV{JAVA_HOME})
 
-    1
-    2
-    3
-    4
-    5
-    6
 
 总结一下，就可以看出来，读取环境变量时要在ENV前加$符号，而写和if判断是否定义时,ENV{JAVA_HOME}指代变量名所以不加$符号。
 --------------------- 
-作者：10km 
-来源：CSDN 
-原文：https://blog.csdn.net/10km/article/details/51769633 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+# 文件拷贝
+```
+第一种
+file(GLOB texture "${CMAKE_CURRENT_SOURCE_DIR}/texture/*.*")
+file(COPY  ${texture} DESTINATION  "${CMAKE_BINARY_DIR}"  )
 
-
-https://blog.csdn.net/lixiang987654321/article/details/49967153
+第二种
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD  COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/texture" "${CMAKE_CURRENT_BINARY_DIR}" )
+```
